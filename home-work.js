@@ -67,6 +67,8 @@ for (let i = 0; i < countriesPrice.length; i += 1) {
    }
 }
 
+// Перевіряємо чи достатьньо коштів
+
 const userPriceNotMoney = "Нажаль вам недостатньо коштів";
 
 if (userCredits > 100) {
@@ -75,13 +77,16 @@ if (userCredits > 100) {
       `Вкажіть країну в яку хочете відправитіся. ${maxPrice}`
    );
 
+   // Перевіряємо чи є крайна у спіску
    for (let i = 0; i < countries.length; i += 1) {
       if (countries[i] === userCountry) {
+         // Перевіряємо чи достатьньо коштів на вибраний тур
          if (userCredits > countriesPrice[i]) {
             userCredits -= countriesPrice[i];
             alert(
                `Дякую що замовили тур до ${countries[i]} на вашому рахунку залишилося ${userCredits}`
             );
+            // Виводимо недостатьньо коштів якщо недостатьньо на вибраний тур
          } else {
             alert(
                `Вам недостатьньо коштів. На вашому рахунку ${userCredits}. Для того щоб відправитися до ${userCountry}  Вам потрібно Додати ще ${
@@ -91,6 +96,7 @@ if (userCredits > 100) {
          }
       }
    }
+   // Виводимо userPriceNotMoney якщо недостатьньо коштів
 } else {
    alert(userPriceNotMoney);
 }
